@@ -13,6 +13,13 @@ const flags = [
 
 let cardItems = [...flags, ...flags];
 
+function shuffleCards(array) {
+  // Shuffle items in the array
+  const shuffled = array.sort(() => Math.random() - 0.5);
+
+  return shuffled;
+}
+
 function createCard(card) {
   // Create a card element
   const cardElement = document.createElement("div");
@@ -39,7 +46,8 @@ function renderCards(cards) {
   const board = document.getElementById("board");
   board.innerHTML = "";
 
-  cards.forEach((card) => {
+  const shuffledCards = shuffleCards(cards);
+  shuffledCards.forEach((card) => {
     const cardElement = createCard(card);
     board.appendChild(cardElement);
   });
@@ -48,13 +56,3 @@ function renderCards(cards) {
 renderCards(cardItems);
 
 console.log(cardItems);
-
-/*
-1. Criar os elementos das cartas - OK
-2. Embaralhar as cartas
-3. Click revelar a carta
-4. Verificar se é igual
-5. Se igual adivinhar o país
-5. Contar pontos
-
-*/
