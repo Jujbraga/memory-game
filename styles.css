@@ -5,8 +5,8 @@
 }
 
 :root {
-  --square-width: 128px;
-  --width: calc((var(--square-width) * 4) + (5px * 3));
+  --square-wh: 128px;
+  --width: calc((var(--square-wh) * 4) + (5px * 3));
 }
 
 body {
@@ -63,8 +63,17 @@ body {
   border: 2px solid #02614b;
   border-radius: 12px;
   background-image: url(assets/diagonal.svg);
-  width: var(--square-width);
+  width: var(--square-wh);
+  height: var(--square-wh);
   aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-flag {
+  aspect-ratio: 1;
+  width: 100%;
+  display: none;
 }
 
 .button {
@@ -78,4 +87,14 @@ body {
   background-color: #02614b;
   border: 2px solid #77c0af;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.revealed {
+  border-color: #746f6f;
+  cursor: not-allowed;
+}
+
+.revealed .card-flag {
+  display: block;
 }
