@@ -9,9 +9,18 @@ const flags = [
   { id: 4, url: imgPath + "portugal.png", matched: false },
   { id: 5, url: imgPath + "spain.png", matched: false },
   { id: 6, url: imgPath + "united-kingdom.png", matched: false },
+  { id: 7, url: imgPath + "greece.png", matched: false },
+  { id: 8, url: imgPath + "moldova.png", matched: false },
+  { id: 9, url: imgPath + "norway.png", matched: false },
+  { id: 10, url: imgPath + "sweden.png", matched: false },
+  { id: 11, url: imgPath + "albania.png", matched: false },
+  { id: 12, url: imgPath + "scotland.png", matched: false },
+  { id: 13, url: imgPath + "slovakia.png", matched: false },
+  { id: 14, url: imgPath + "vatican.png", matched: false },
+  { id: 15, url: imgPath + "croatia.png", matched: false },
 ];
 
-const cardItems = [...flags, ...flags];
+let cardItems = [];
 
 // Game varibles
 let flippedCards = []; // Store the flipped cards
