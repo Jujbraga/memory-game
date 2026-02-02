@@ -93,6 +93,15 @@ function showCard(cardElement, card) {
     // Increments the attempts
     attempts++;
     updateStats();
+
+    // Check if there is pairs to find
+    const toFind = cardItems.find((item) => item.matched === false);
+
+    if (!toFind) {
+      alert(
+        "🎉 Congrats! You found all pairs.\nTo play again click in the Restart button.",
+      );
+    }
   }
 }
 
@@ -101,4 +110,24 @@ function updateStats() {
   stats.textContent = `${matchedPairs} pairs found out of ${attempts} attempts`;
 }
 
+function restartGame() {
+  // Reset the game variables
+  flippedCards = [];
+  isCheckingCards = false;
+  matchedPairs = 0;
+  attempts = 0;
+
+  // Reset the cards matched property
+  cardItems.forEach((card) => (card.matched = false));
+
+  renderCards(cardItems);
+  updateStats();
+}
+
+function restartGameButton() {
+  const restartButton = document.querySelector("#restart");
+  restartButton.addEventListener("click", restartGame);
+}
+
 renderCards(cardItems);
+restartGameButton();
