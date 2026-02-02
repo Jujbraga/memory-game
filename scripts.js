@@ -16,8 +16,8 @@ const cardItems = [...flags, ...flags];
 // Game varibles
 let flippedCards = []; // Store the flipped cards
 let isCheckingCards = false; // Block the game while cheching pairs
-let matchedPairs = 0; // Contador de pares encontrados.
-let attempts = 0; // Contador de tentativas do jogador.
+let matchedPairs = 0; // Counter of pairs found
+let attempts = 0; // Counter of attempts
 
 function shuffleCards(array) {
   // Shuffle items in the array
@@ -78,9 +78,8 @@ function showCard(cardElement, card) {
     if (cardOne.card.id === cardTwo.card.id) {
       card.matched = true; // Set this propertie to true
       flippedCards = []; // Clear this array to next round
+      matchedPairs++; // Increments the number of pairs found
       isCheckingCards = false; // Unlock the game for the next round
-      console.log("Match");
-      console.log(matchedPairs);
     } else {
       // If not equal
       setTimeout(() => {
@@ -90,8 +89,16 @@ function showCard(cardElement, card) {
         isCheckingCards = false;
       }, 1000);
     }
-    // console.log(flippedCards);
+
+    // Increments the attempts
+    attempts++;
+    updateStats();
   }
+}
+
+function updateStats() {
+  const stats = document.querySelector(".stats");
+  stats.textContent = `${matchedPairs} pairs found out of ${attempts} attempts`;
 }
 
 renderCards(cardItems);
