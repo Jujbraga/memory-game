@@ -17,12 +17,21 @@
     <header>
       <div class="game-title">
         <h1>MEMORY</h1>
-        <h3>Flags</h3>
+        <h3>Europe Flags</h3>
       </div>
     </header>
 
-    <main class="game-board">
-      <div class="stats">0 pairs found out out of 0 attempts</div>
+    <main id="game-board" class="game-board">
+      <div class="level-options">
+        <h2>Chose a level</h2>
+        <div class="button-wrapper">
+          <button id="easy" class="button">Easy</button>
+          <button id="medium" class="button">Medium</button>
+          <button id="hard" class="button">Hard</button>
+        </div>
+      </div>
+
+      <!-- <div class="stats">0 pairs found out out of 0 attempts</div> -->
       <div id="board" class="cards-grid"></div>
       <button id="restart" class="button">Restart</button>
     </main>

@@ -5,8 +5,10 @@
 }
 
 :root {
-  --square-wh: 128px;
-  --width: calc((var(--square-wh) * 4) + (5px * 3));
+  --width: 550px;
+  --brand: #77c0af;
+  --background: #020202;
+  --grid-column: repeat(4, 1fr);
 }
 
 body {
@@ -16,7 +18,7 @@ body {
   flex-direction: column;
   align-items: center;
   position: relative;
-  background: #020202;
+  background: var(--background);
   color: #fff;
   font:
     400 0.85rem/1.5 "Lexend Deca",
@@ -52,19 +54,18 @@ body {
 }
 
 .cards-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: var(--grid-column);
   gap: 5px;
   width: 100%;
 }
 
 .card {
-  background-color: #77c0af;
+  background-color: var(--brand);
   border: 2px solid #02614b;
   border-radius: 12px;
   background-image: url(assets/diagonal.svg);
-  width: var(--square-wh);
-  height: var(--square-wh);
+  width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
   cursor: pointer;
@@ -76,6 +77,11 @@ body {
   display: none;
 }
 
+.button-wrapper {
+  display: flex;
+  gap: 15px;
+}
+
 .button {
   all: unset;
   display: flex;
@@ -85,7 +91,7 @@ body {
   width: 100%;
   height: 40px;
   background-color: #02614b;
-  border: 2px solid #77c0af;
+  border: 2px solid var(--brand);
   border-radius: 8px;
   cursor: pointer;
 }
@@ -97,4 +103,20 @@ body {
 
 .revealed .card-flag {
   display: block;
+}
+
+.level-options {
+  background-color: var(--background);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid var(--brand);
+  border-radius: 8px;
+  width: 70%;
+  text-align: center;
+}
+
+@media (width <= 38em) {
+  :root {
+    --width: calc(100vw - 20px);
+  }
 }

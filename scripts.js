@@ -28,6 +28,35 @@ let isCheckingCards = false; // Block the game while cheching pairs
 let matchedPairs = 0; // Counter of pairs found
 let attempts = 0; // Counter of attempts
 
+// Set the level to change the cards quantity
+function setLevel() {
+  const levelOptions = document.querySelector(".level-options");
+  const cssRoot = document.querySelector(":root");
+  const mediaQuery = window.matchMedia("(max-width: 38em)");
+
+  levelOptions.addEventListener("click", (e) => {
+    switch (e.target.id) {
+      case "hard":
+        cardItems = [...flags, ...flags];
+        cssRoot.style.setProperty("--grid-column", "repeat(6, 1fr)");
+        break;
+      case "medium":
+        cardItems = [...flags.slice(0, 10), ...flags.slice(0, 10)];
+        cssRoot.style.setProperty("--grid-column", "repeat(5, 1fr)");
+        break;
+      default:
+        cardItems = [...flags.slice(0, 6), ...flags.slice(0, 6)];
+        break;
+    }
+    // Set cards grid in mobile
+    if (mediaQuery && cardItems.length > 12) {
+      cssRoot.style.setProperty("--grid-column", "repeat(5, 1fr)");
+    }
+
+    renderCards(cardItems);
+  });
+}
+
 function shuffleCards(array) {
   // Shuffle items in the array
   const shuffled = array.sort(() => Math.random() - 0.5);
@@ -58,8 +87,14 @@ function createCard(card) {
 
 // Renders the cards
 function renderCards(cards) {
-  const board = document.getElementById("board");
-  board.innerHTML = "";
+  const gameBoard = document.getElementById("game-board");
+  gameBoard.innerHTML = "";
+
+  // Create the board
+  const board = document.createElement("div");
+  board.setAttribute("id", "board");
+  board.classList.add("cards-grid");
+  gameBoard.appendChild(board);
 
   const shuffledCards = shuffleCards(cards);
   shuffledCards.forEach((card) => {
@@ -138,5 +173,6 @@ function restartGameButton() {
   restartButton.addEventListener("click", restartGame);
 }
 
-renderCards(cardItems);
-restartGameButton();
+setLevel();
+
+// restartGameButton();
