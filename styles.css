@@ -111,8 +111,12 @@ body {
   padding: 20px;
   border: 1px solid var(--brand);
   border-radius: 8px;
-  width: 70%;
+  width: var(--width);
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (width <= 38em) {

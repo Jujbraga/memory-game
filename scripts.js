@@ -49,11 +49,11 @@ function setLevel() {
         break;
     }
     // Set cards grid in mobile
-    if (mediaQuery && cardItems.length > 12) {
+    if (mediaQuery.matches && cardItems.length > 12) {
       cssRoot.style.setProperty("--grid-column", "repeat(5, 1fr)");
     }
-
-    renderCards(cardItems);
+    levelOptions.classList.add("hidden");
+    renderGame(cardItems);
   });
 }
 
@@ -86,9 +86,15 @@ function createCard(card) {
 }
 
 // Renders the cards
-function renderCards(cards) {
+function renderGame(cards) {
   const gameBoard = document.getElementById("game-board");
   gameBoard.innerHTML = "";
+
+  // Create the stats
+  const stats = document.createElement("div");
+  stats.classList.add("stats");
+  stats.textContent = "0 pairs found out out of 0 attempts";
+  gameBoard.appendChild(stats);
 
   // Create the board
   const board = document.createElement("div");
@@ -96,11 +102,21 @@ function renderCards(cards) {
   board.classList.add("cards-grid");
   gameBoard.appendChild(board);
 
+  // Shuffle the cards and put on the board
   const shuffledCards = shuffleCards(cards);
   shuffledCards.forEach((card) => {
     const cardElement = createCard(card);
     board.appendChild(cardElement);
   });
+
+  // Create the restart button
+  const button = document.createElement("button");
+  button.classList.add("button");
+  button.setAttribute("id", "restart");
+  button.textContent = "Restart";
+  gameBoard.appendChild(button);
+
+  restartGameButton();
 }
 
 function showCard(cardElement, card) {
@@ -164,8 +180,15 @@ function restartGame() {
   // Reset the cards matched property
   cardItems.forEach((card) => (card.matched = false));
 
-  renderCards(cardItems);
-  updateStats();
+  // Show the level options again
+  const levelOptions = document.querySelector(".level-options");
+  levelOptions.classList.remove("hidden");
+
+  // Clear the game board
+  const gameBoard = document.getElementById("game-board");
+  gameBoard.innerHTML = "";
+
+  setLevel();
 }
 
 function restartGameButton() {
@@ -174,5 +197,3 @@ function restartGameButton() {
 }
 
 setLevel();
-
-// restartGameButton();
