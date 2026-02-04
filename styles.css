@@ -6,7 +6,8 @@
 
 :root {
   --width: 550px;
-  --brand: #77c0af;
+  --brand: #2fa8cc;
+  --brand-dark: #2980ba;
   --background: #020202;
   --grid-column: repeat(4, 1fr);
 }
@@ -25,6 +26,11 @@ body {
     sans-serif;
 }
 
+.logo {
+  display: flex;
+  gap: 5px;
+}
+
 .game-title {
   padding-top: 20px;
   width: var(--width);
@@ -36,7 +42,7 @@ body {
     font-family: "Asimovian", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #77c0af;
+    color: var(--brand);
   }
 }
 
@@ -62,7 +68,7 @@ body {
 
 .card {
   background-color: var(--brand);
-  border: 2px solid #02614b;
+  border: 2px solid var(--brand-dark);
   border-radius: 12px;
   background-image: url(assets/diagonal.svg);
   width: 100%;
@@ -90,7 +96,7 @@ body {
   margin-top: 30px;
   width: 100%;
   height: 40px;
-  background-color: #02614b;
+  background-color: var(--brand-dark);
   border: 2px solid var(--brand);
   border-radius: 8px;
   cursor: pointer;
