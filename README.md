@@ -1,4 +1,4 @@
-# 🧩 Memory Game - Europa Flags
+# 🧩 Memory Gamef
 
 <p align="center">
   <img alt="Project Preview" src="./assets/preview.png" width="100%">
@@ -12,7 +12,7 @@
 
 ## 💻 About the Project
 
-This is an interactive and responsive **Memory Game** featuring flags from European countries. Developed with a focus on clean logic and smooth user experience, the game challenges players to find matching pairs while tracking their performance.
+This is an interactive and responsive **Memory Game**. Developed with a focus on clean logic and smooth user experience, the game challenges players to find matching pairs while tracking their performance.
 
 The project was built using pure **HTML, CSS, and Vanilla JavaScript**, demonstrating DOM manipulation, state management, and CSS Grid/Flexbox layouts.
 
