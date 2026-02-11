@@ -67,6 +67,9 @@ body {
 }
 
 .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--brand);
   border: 2px solid var(--brand-dark);
   border-radius: 12px;
@@ -77,9 +80,9 @@ body {
   cursor: pointer;
 }
 
-.card-flag {
+.card-img {
   aspect-ratio: 1;
-  width: 100%;
+  width: 90%;
   display: none;
 }
 
@@ -103,11 +106,12 @@ body {
 }
 
 .revealed {
+  background-color: #fff;
   border-color: #746f6f;
   cursor: not-allowed;
 }
 
-.revealed .card-flag {
+.revealed .card-img {
   display: block;
 }
 

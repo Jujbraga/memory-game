@@ -1,23 +1,23 @@
 // Path to the cards images
-const imgPath = "assets/flags/";
+const imgPath = "assets/cards/";
 
 // Array with the cards game
-const flags = [
-  { id: 1, url: imgPath + "france.png", matched: false },
-  { id: 2, url: imgPath + "germany.png", matched: false },
-  { id: 3, url: imgPath + "italy.png", matched: false },
-  { id: 4, url: imgPath + "portugal.png", matched: false },
-  { id: 5, url: imgPath + "spain.png", matched: false },
-  { id: 6, url: imgPath + "united-kingdom.png", matched: false },
-  { id: 7, url: imgPath + "greece.png", matched: false },
-  { id: 8, url: imgPath + "moldova.png", matched: false },
-  { id: 9, url: imgPath + "norway.png", matched: false },
-  { id: 10, url: imgPath + "sweden.png", matched: false },
-  { id: 11, url: imgPath + "albania.png", matched: false },
-  { id: 12, url: imgPath + "scotland.png", matched: false },
-  { id: 13, url: imgPath + "slovakia.png", matched: false },
-  { id: 14, url: imgPath + "vatican.png", matched: false },
-  { id: 15, url: imgPath + "croatia.png", matched: false },
+const cards = [
+  { id: 1, url: imgPath + "tractor.png", matched: false },
+  { id: 2, url: imgPath + "truck.png", matched: false },
+  { id: 3, url: imgPath + "car.png", matched: false },
+  { id: 4, url: imgPath + "ambulance.png", matched: false },
+  { id: 5, url: imgPath + "train.png", matched: false },
+  { id: 6, url: imgPath + "airplane.png", matched: false },
+  { id: 7, url: imgPath + "ship.png", matched: false },
+  { id: 8, url: imgPath + "ball.png", matched: false },
+  { id: 9, url: imgPath + "dino.png", matched: false },
+  { id: 10, url: imgPath + "balloons.png", matched: false },
+  { id: 11, url: imgPath + "teddy-bear.png", matched: false },
+  { id: 12, url: imgPath + "bananas.png", matched: false },
+  { id: 13, url: imgPath + "apple.png", matched: false },
+  { id: 14, url: imgPath + "grapes.png", matched: false },
+  { id: 15, url: imgPath + "boiled-egg.png", matched: false },
 ];
 
 let cardItems = [];
@@ -37,15 +37,15 @@ function setLevel() {
   levelOptions.addEventListener("click", (e) => {
     switch (e.target.id) {
       case "hard":
-        cardItems = [...flags, ...flags];
+        cardItems = [...cards, ...cards];
         cssRoot.style.setProperty("--grid-column", "repeat(6, 1fr)");
         break;
       case "medium":
-        cardItems = [...flags.slice(0, 10), ...flags.slice(0, 10)];
+        cardItems = [...cards.slice(0, 10), ...cards.slice(0, 10)];
         cssRoot.style.setProperty("--grid-column", "repeat(5, 1fr)");
         break;
       default:
-        cardItems = [...flags.slice(0, 6), ...flags.slice(0, 6)];
+        cardItems = [...cards.slice(0, 6), ...cards.slice(0, 6)];
         break;
     }
     // Set cards grid in mobile
@@ -71,7 +71,7 @@ function createCard(card) {
 
   // Create the card image
   const imgElement = document.createElement("img");
-  imgElement.className = "card-flag";
+  imgElement.className = "card-img";
   imgElement.setAttribute("src", card.url);
 
   // Add image element to card
